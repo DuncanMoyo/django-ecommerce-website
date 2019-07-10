@@ -1,2 +1,11 @@
 env
 venv/
+.env
+.gitignore
+.idea/
+.vscode/
+README.md
+core/__init__.py
+core/__pycache__/
+
+
