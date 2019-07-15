@@ -26,8 +26,10 @@ DEBUG_TOOLBAR_PANELS = [
     'debug_toolbar.panels.redirects.RedirectsPanel',
 ]
 
+
 def show_toolbar(request):
     return True
+
 
 DEBUG_TOOLBAR_CONFIG = {
     'INTERCEPT_REDIRECTS': False,
@@ -41,5 +43,5 @@ DATABASES = {
     }
 }
 
-STRIPE_PUBLIC_KEY = ''
-STRIPE_SECRET_KEY = ''
+STRIPE_PUBLIC_KEY = 'pk_test_tx8uE8Va8yN3YmRlRZ0fZULC00RLAevl8q'
+STRIPE_SECRET_KEY = 'sk_test_M6hBTe1EWdJqZplNq23kn54Q00HcSnrNNZ'

@@ -20,7 +20,8 @@ class CheckoutForm(forms.Form):
         'class': 'custom-select d-block w-100'
     }))
     zip = forms.CharField(widget=forms.TextInput(attrs={
-        'class': 'form-control'
+        'class': 'form-control',
+        'id': 'zip'
     }))
     same_shipping_address = forms.BooleanField(widget=forms.CheckboxInput())
     save_info = forms.BooleanField(widget=forms.CheckboxInput())
