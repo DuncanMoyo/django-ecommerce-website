@@ -59,6 +59,12 @@ class CheckoutView(View):
                 else:
                     messages.warning(self.request, 'Invalid payment option selected')
                     return redirect('core:checkout')
+            else:
+                messages.error(self.request, 'Form is invalid')
+                context = {
+                    'form': form
+                }
+                return render(self.request, 'checkout.html', context)
         except ObjectDoesNotExist:
             messages.error(self.request, 'You do not have an active order')
             return redirect('core:order-summary')
