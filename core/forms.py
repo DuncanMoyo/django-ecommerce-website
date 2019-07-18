@@ -23,6 +23,6 @@ class CheckoutForm(forms.Form):
         'class': 'form-control',
         'id': 'zip'
     }))
-    same_shipping_address = forms.BooleanField(widget=forms.CheckboxInput())
-    save_info = forms.BooleanField(widget=forms.CheckboxInput())
+    same_shipping_address = forms.BooleanField(required=False)
+    save_info = forms.BooleanField(required=False)
     payment_option = forms.ChoiceField(widget=forms.RadioSelect, choices=PAYMENT_CHOICES)
