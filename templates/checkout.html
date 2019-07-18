@@ -16,6 +16,8 @@
                     <!--Card content-->
                     <form method="POST" class="card-body">
                         {% csrf_token %}
+                        {{ form.errors }}
+                        {{ form.non_field_errors }}
                         <!--address-->
                         <div class="md-form mb-5">
                             {% comment %}<input type="text" id="address" class="form-control" placeholder="1234 Main St">{% endcomment %}
