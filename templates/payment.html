@@ -114,6 +114,8 @@ button:hover {
 
                         <form action="." method="post" id="stripe-form">
                             {% csrf_token %}
+                            {{ form.errors }}
+                            {{ form.non_field_errors }}
                             <div class="stripe-form-row">
                                 <label for="card-element" id="stripeBtnlabel">
                                     Credit or debit card
