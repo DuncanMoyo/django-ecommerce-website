@@ -2,37 +2,30 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-<!--Main layout-->
 <main>
     <div class="container wow fadeIn">
-        <!-- Heading -->
-        <h2 class="my-5 h2 text-center">Checkout form</h2>
-        <!--Grid row-->
+        <h2 class="my-5 h2 text-center">Checkout Form</h2>
         <div class="row">
-            <!--Grid column-->
             <div class="col-md-8 mb-4">
-                <!--Card-->
                 <div class="card">
-                    <!--Card content-->
                     <form method="POST" class="card-body">
                         {% csrf_token %}
                         {{ form.errors }}
                         {{ form.non_field_errors }}
-                        <!--address-->
+
                         <div class="md-form mb-5">
                             {% comment %}<input type="text" id="address" class="form-control" placeholder="1234 Main St">{% endcomment %}
                             {{ form.street_address }}
                             <label for="address" class="">Address</label>
                         </div>
-                        <!--address-2-->
+
                         <div class="md-form mb-5">
                             {% comment %}<input type="text" id="address-2" class="form-control" placeholder="Apartment or suite">{% endcomment %}
                             {{ form.apartment_address }}
                             <label for="address-2" class="">(optional)</label>
                         </div>
-                        <!--Grid row-->
+
                         <div class="row">
-                            <!--Grid column-->
                             <div class="col-lg-4 col-md-12 mb-4">
                                 <label for="country">Country</label>
                                 {% comment %}
@@ -46,8 +39,7 @@
                                     Please select a valid country.
                                 </div>
                             </div>
-                            <!--Grid column-->
-                            <!--Grid column-->
+
                             <div class="col-lg-4 col-md-6 mb-4">
                                 <label for="zip">Zip</label>
                                 {% comment %}<input type="text" class="form-control" id="zip" placeholder="" required>{% endcomment %}
@@ -56,19 +48,21 @@
                                     Zip code required.
                                 </div>
                             </div>
-                            <!--Grid column-->
                         </div>
-                        <!--Grid row-->
                         <hr>
+
                         <div class="custom-control custom-checkbox">
                             <input {% if form.same_shipping_address.value %}checked{% endif %} type="checkbox" class="custom-control-input" name="same_billing_address" id="same-address">
                             <label class="custom-control-label" for="same-address">Shipping address is the same as my billing address</label>
                         </div>
+
                         <div class="custom-control custom-checkbox">
                             <input {% if form.save_info.value %}checked{% endif %} type="checkbox" class="custom-control-input" name="save_info" id="save-info">
                             <label class="custom-control-label" for="save-info">Save this information for next time</label>
                         </div>
+
                         <hr>
+
                         <div class="d-block my-3">
                             {% for value, name in form.fields.payment_option.choices %}
                                 <div class="custom-control custom-radio">
@@ -77,6 +71,7 @@
                                     {% comment %} {{ form.payment_option }} {% endcomment %}
                                 </div>
                             {% endfor %}
+
                             {% comment %}
                                 <div class="custom-control custom-radio">
                                     <input id="debit" name="paymentMethod" type="radio" class="custom-control-input" required>
@@ -84,16 +79,18 @@
                                 </div>
                             {% endcomment %}
                         </div>
+
                         <hr class="mb-4">
+
                         <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
                     </form>
                 </div>
-                <!--/.Card-->
             </div>
-            <!--Grid column-->
+
+            <div class="col-md-4 mb-4">
+                {% include 'order_snippet.html' %}
+            </div>
         </div>
-        <!--Grid row-->
     </div>
 </main>
-</body>
 {% endblock %}

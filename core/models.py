@@ -48,7 +48,7 @@ class Item(models.Model):
 class OrderItem(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     item = models.ForeignKey(Item, on_delete=models.CASCADE)
-    quantity = models.IntegerField(default=0)
+    quantity = models.IntegerField(default=1)
     ordered = models.BooleanField(default=False)
 
     def __str__(self):
@@ -88,6 +88,8 @@ class Order(models.Model):
         total = 0
         for order_item in self.items.all():
             total += order_item.get_final_price()
+        # TODO find a way to solve this attribute error raised by this code
+#        total -= self.coupon.amount
         return total
 
 
@@ -114,9 +116,13 @@ class Payment(models.Model):
 
 class Coupon(models.Model):
     code = models.CharField(max_length=15)
+    amount = models.FloatField()
 
     def __str__(self):
         return self.code
+
+
+
 
 
 
